@@ -1,10 +1,10 @@
 # EX01 Developing a Simple Webserver
-## Date: 12-03-2025
-## Name : ADHITHYA A
+## Date: 10.03.2025
+## Name: ADHITHYA A
 ## Reg : 212222220004
 
 ## AIM:
-To develop a simple webserver to serve html pages and display the configuration details of laptop.
+To develop a simple webserver to serve html pages and display the list of protocols in TCP/IP Protocol Suite.
 
 ## DESIGN STEPS:
 ### Step 1: 
@@ -17,54 +17,86 @@ Design of webserver workflow.
 Implementation using Python code.
 
 ### Step 4:
-Serving the HTML pages.
+Import the necessary modules.
 
 ### Step 5:
-Testing the webserver.
+Define a custom request handler.
+
+### Step 6:
+Start an HTTP server on a specific port.
+
+### Step 7:
+Run the Python script to serve web pages.
+
+### Step 8:
+Serve the HTML pages.
+
+### Step 9:
+Start the server script and check for errors.
+
+### Step 10:
+Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
-
 ```
-from http.server import HTTPServer, BaseHTTPRequestHandler
-content = """
+from http.server import HTTPServer,BaseHTTPRequestHandler
+content='''
+<html lang="en">
+<head>
+    <title>lap specs.</title>
+</head>
+<body>
 
-<html>
-    <body>
-        <h1 style="color:red;text-align: center">DEVICE CONFIGURATION-24011485</h1>
-        <ul align="center">
-            <b>Device name:</b>	NANDA_KISHOR_SP-24011485 <br>
-            <b>Processor:</b>	13th Gen Intel(R) Core(TM) i5-1335U   1.30 GHz <br>
-            <b>Installed RAM:</b>	16.0 GB (15.7 GB usable) <br>
-            <b>Device ID:</b>	15EEA3B2-7EF5-4DEC-903D-577382C3C005   <br>
-            <b>Product ID:</b>	00342-42709-07393-AAOEM   <br>
-            <b>System type:</b>	64-bit operating system, x64-based processor  <br>
-            <b>Pen and touch:</b>	No pen or touch input is available for this display    <br>
-            
-
-        </ul>
-    </body>
+     <table border="3" cellpadding="10">
+        <caption style="font-size: x-large;">LAPTOP SPECIFICATTION</caption>
+        <TR>
+            <TD>BRAND</TD>
+            <TD>LENOVO</TD>
+        </TR>
+        <TR>
+            <TD>SERIES</TD>
+            <TD>THINKPAD E16 GEN1</TD>
+        </TR>
+        <TR>
+            <TD>PROCESSOR BRAND</TD>
+            <TD>INTEL</TD>
+        </TR>
+        <TR>
+            <TD>PROCESSOR TYPE</TD>
+            <TD>CORE I5</TD>
+        </TR>
+        <TR>
+            <TD>GRAPHICS CARD INTERFACE</TD>
+            <TD>INTEGRATED</TD>
+        </TR>
+        <TR>
+            <TD>OPERATING SYSTEM</TD>
+            <TD>WINDOWS 11 HOME</TD>
+        </TR>
+     </table> 
+</body>
 </html>
-"""
-class myhandler(BaseHTTPRequestHandler):
+'''
+class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("request received")
-        self.send_response(200)
-        self.send_header('content-type', 'text/html; charset=utf-8')
+        print("Get request received...")
+        self.send_response(200) 
+        self.send_header("content-type", "text/html")       
         self.end_headers()
         self.wfile.write(content.encode())
-server_address = ('',8000)
-httpd = HTTPServer(server_address,myhandler)
-print("my webserver is running...")
-httpd.serve_forever()
 
+print("This is my webserver") 
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
+httpd.serve_forever()
 ```
 
 
 ## OUTPUT:
+![Screenshot 2025-04-29 140046](https://github.com/user-attachments/assets/cd491d8d-c28c-4368-9827-b1782e929df9)
+![Screenshot 2025-04-29 135618](https://github.com/user-attachments/assets/955a276d-3718-4475-991f-cc68cabb256e)
 
-![alt text](<Screenshot (27)-1.png>)
 
-![alt text](<Screenshot (26).png>)
 
 ## RESULT:
 The program for implementing simple webserver is executed successfully.
